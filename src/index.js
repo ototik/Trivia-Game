@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './Zsgameresult.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import PopUp from "./Zsgameresult";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+  state = {
+    result: false
+  };
+
+  togglePop = () => {
+    this.setState({
+      result: !this.state.result
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <div className="resultbtn" onClick={this.togglePop}>
+          <button className="resultButton">See the result</button>
+        </div>
+        {this.state.result ? <PopUp toggle={this.togglePop} /> : null}
+      </div>
+    );
+  }
 }
-
-export default App;
