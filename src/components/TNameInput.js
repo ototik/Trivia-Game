@@ -4,30 +4,41 @@ import './TNameInput.css';
 class TNameInput extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {value: ''};
-  
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this.state = {
+        value: 'Dummy',
+        displayValue: '' 
+      };
     }
   
     handleChange(event) {
-      this.setState({value: event.target.value});
+      let inp = event.target.value;
+      inp = inp.replace(/[^\w\s]/gi, "");
+      inp = inp.replace(/ /g, "");
+
+      this.setState({
+        value: inp
+      });
     }
   
     handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.value);
-//    event.preventDefault();
+      event.preventDefault();
+      this.setState({
+        displayValue: `Let's play, ${this.state.value}!`
+      });
     }
   
     render() {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
+        <div className="Tcontainer">
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <label htmlFor="playerName"> Please choose a name: </label>
+            <div>
+              <input type="text" name="playerName" size="30" minLength={3} maxLength={18} autocomplete="off" required value={this.state.value} onChange={this.handleChange.bind(this)} />
+              <input type="submit" value="Submit" />
+            </div>
+          </form>
+          <h2> {this.state.displayValue} </h2>
+        </div>
       );
     }
   }
