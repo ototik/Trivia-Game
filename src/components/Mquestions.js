@@ -6,7 +6,7 @@ class Mquestions extends React.Component {
         super(props);
         this.state = {
             question: "",
-            answer: "",
+            answer: [],
             current: 0,
             max: 0,
             score: 0,

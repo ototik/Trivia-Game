@@ -1,6 +1,5 @@
 import React from 'react';
 import Mquestions from './components/Mquestions';
-import Nselector from "./components/Nselector";
 import './App.css';
 
 class App extends React.Component {
@@ -14,7 +13,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nselector />
         <Mquestions />
       </div>
     );
