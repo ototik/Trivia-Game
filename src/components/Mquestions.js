@@ -6,7 +6,7 @@ class Mquestions extends React.Component {
         super(props);
         this.state = {
             question: "",
-            answer: [],
+            answers: [],
             current: 0,
             max: 0,
             score: 0,
@@ -15,26 +15,31 @@ class Mquestions extends React.Component {
         this.getQuestion = this.getQuestion.bind(this);
     }
 
+    componentDidMount() {
+        this.getQuestion();
+
+    }
+
+
+
     getQuestion() {
         axios.get('https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple')
             .then(response => response.data)
             .then(data => {
                 this.setState({
                     question: data.results[this.state.current].question,
-                    answer: data.results[this.state.current].incorrect_answers + data.results[this.state.current].correct_answer,
+                    answers: [  [data.results[this.state.current].incorrect_answers[0]],
+                                [data.results[this.state.current].incorrect_answers[1]],
+                                [data.results[this.state.current].incorrect_answers[2]],
+                                [data.results[this.state.current].correct_answer]].sort(() => Math.random() - 0.5),
                     max: data.results.length,
                     current: this.state.current + 1,
+
                 })
 
             })
-            
-    }
 
-    componentDidMount() {
-        this.getQuestion();
-        
     }
-
 
     render() {
         return (
@@ -45,10 +50,12 @@ class Mquestions extends React.Component {
                 </div>
                 <div>
                     <ul>
-                        <li>{this.state.answer}</li>
-                        <li>{this.state.answer}</li>
-                        <li>{this.state.answer}</li>
-                        <li>{this.state.answer}</li>
+                        <li onClick={event => {
+                                console.log("the event works")}}>
+                            {this.state.answers[0]}</li>
+                        <li>{this.state.answers[1]}</li>
+                        <li>{this.state.answers[2]}</li>
+                        <li>{this.state.answers[3]}</li>
 
                     </ul>
                 </div>
