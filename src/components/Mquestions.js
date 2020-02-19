@@ -20,7 +20,7 @@ class Mquestions extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('https://opentdb.com/api.php?amount=10&category=9&difficulty=medium&type=multiple')
+        axios.get('https://opentdb.com/api.php?amount=10')
         .then(response => response.data)
         .then(data => {
             this.setState({
@@ -33,6 +33,7 @@ class Mquestions extends React.Component {
 
     getQuestion() {
         let { current, apidata } = this.state;
+        if (apidata.results[current].type === "multiple") {
                 this.setState({
                     question:   apidata.results[current].question,
                     answers:    [[apidata.results[current].incorrect_answers[0]],
@@ -43,7 +44,18 @@ class Mquestions extends React.Component {
                     max:        apidata.results.length,
                     current:    current + 1,
                 })     
-                  
+        }
+        else {
+                this.setState({
+                    question:   apidata.results[current].question,
+                    answers:    [["True"],
+                                ["False"]],
+                    cor_answer: apidata.results[current].correct_answer,           
+                    max:        apidata.results.length,
+                    current:    current + 1,
+            }) 
+            console.log(this.state.apidata.results[current].type)
+        }       
     }
     
     isRightAnswer() {
