@@ -19,7 +19,7 @@ class Mquestions extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('https://opentdb.com/api.php?amount=10')
+        axios.get('https://opentdb.com/api.php?amount=10&category=26&difficulty=easy')
         .then(response => response.data)
         .then(data => {
             this.setState({

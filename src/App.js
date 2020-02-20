@@ -1,6 +1,7 @@
 import React from 'react';
 import Mquestions from './components/Mquestions';
 import './App.css';
+import Nselector from "./components/Nselector";
 
 class App extends React.Component {
   getQuestion = async e => {
@@ -13,6 +14,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <Nselector />
         <Mquestions />
       </div>
     );
