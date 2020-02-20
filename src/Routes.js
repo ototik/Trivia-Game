@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Router, Switch, Route } from "react-router-dom";
-import Results from "./Results/Results";
-import Game from "./Game/Game";
-import Anotherpage from "./Anotherpage/Anotherpage";
-import Home from "./Home/Home";
+import Results from "./components/Results";
+import Game from "./components/Game";
+import Anotherpage from "./components/Anotherpage";
+import Home from "./components/Home";
 import history from "./history";
 
 export default class Routes extends Component {

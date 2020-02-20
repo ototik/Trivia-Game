@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import history from "./../history";
+import history from "../history";
 import "./Home.css";
 
 export default class Home extends Component {
