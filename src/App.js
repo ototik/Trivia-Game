@@ -1,13 +1,19 @@
-import React from 'react';
-import TNameInput from './components/TNameInput.js';
+import React, { Component } from 'react';
+
+import Routes from './Routes';
 
 
-function App() {
-  return (
-    <div>
-      <TNameInput />
-    </div>
-  );
+
+class App extends Component {
+
+  render() {
+    return (
+      <div className="App">
+        <Routes />
+      </div>
+    );
+  }
 }
+
 
 export default App;

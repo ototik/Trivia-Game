@@ -1,43 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './TNameInput.css';
+import history from "./../history";
 
-class TNameInput extends React.Component {
+class TNameInput extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        value: 'Dummy',
-        displayValue: '' 
+          playerName: "Dummy",
       };
     }
   
-    handleChange(event) {
+    onHandleChange(event) {
       let inp = event.target.value;
       inp = inp.replace(/[^\w\s]/gi, "");
       inp = inp.replace(/ /g, "");
 
       this.setState({
-        value: inp
+        playerName: inp
       });
     }
   
-    handleSubmit(event) {
-      event.preventDefault();
-      this.setState({
-        displayValue: `Let's play, ${this.state.value}!`
-      });
+    onChangePlayerName(event) {
+      history.push('/selector');
     }
   
     render() {
       return (
         <div className="Tcontainer">
-          <form onSubmit={this.handleSubmit.bind(this)}>
-            <label htmlFor="playerName"> Please choose a name: </label>
-            <div>
-              <input type="text" name="playerName" size="30" minLength={3} maxLength={18} autocomplete="off" required value={this.state.value} onChange={this.handleChange.bind(this)} />
-              <input type="submit" value="Submit" />
-            </div>
-          </form>
-          <h2> {this.state.displayValue} </h2>
+          <label> Please choose a name: 
+            <input type="text" value={this.state.playerName} name="playerName" size="30" minLength={3} maxLength={18} autocomplete="off" required
+              onChange={(event) => this.onHandleChange(event)} />
+          </label>
+          <button onClick={this.onChangePlayerName.bind(this)}>That's me, let's go!</button>
         </div>
       );
     }
