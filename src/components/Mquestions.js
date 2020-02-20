@@ -16,7 +16,6 @@ class Mquestions extends React.Component {
         };
         this.getQuestion = this.getQuestion.bind(this);
         this.isRightAnswer = this.isRightAnswer.bind(this);
-        this.isWrongAnswer = this.isWrongAnswer.bind(this);
     }
 
     componentDidMount() {
@@ -65,9 +64,6 @@ class Mquestions extends React.Component {
         this.getQuestion()
     }
 
-    isWrongAnswer() {
-        this.getQuestion()
-    }
 
     render() {
         let { current, max, score, answers, question, cor_answer } = this.state;
@@ -79,16 +75,16 @@ class Mquestions extends React.Component {
                 </div>
                 <div>
                     <ul>
-                        <li onClick={event => { cor_answer === event.target.innerText ? this.isRightAnswer() : this.isWrongAnswer()}}>
+                        <li onClick={event => { cor_answer === event.target.innerText ? this.isRightAnswer() : this.getQuestion()}}>
                                 {answers[0]}
                         </li>
-                        <li onClick={event => { cor_answer === event.target.innerText ? this.isRightAnswer() : this.isWrongAnswer()}}>
+                        <li onClick={event => { cor_answer === event.target.innerText ? this.isRightAnswer() : this.getQuestion()}}>
                                 {answers[1]}
                         </li>
-                        <li onClick={event => { cor_answer === event.target.innerText ? this.isRightAnswer() : this.isWrongAnswer()}}>
+                        <li onClick={event => { cor_answer === event.target.innerText ? this.isRightAnswer() : this.getQuestion()}}>
                                 {answers[2]}
                         </li>
-                        <li onClick={event => { cor_answer === event.target.innerText ? this.isRightAnswer() : this.isWrongAnswer()}}>
+                        <li onClick={event => { cor_answer === event.target.innerText ? this.isRightAnswer() : this.getQuestion()}}>
                                 {answers[3]}
                         </li>
                     </ul>
