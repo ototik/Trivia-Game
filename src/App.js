@@ -3,6 +3,9 @@ import Mquestions from './components/Mquestions';
 import './App.css';
 import Nselector from "./components/Nselector";
 import PopUp from "./components/Zsgameresult";
+import Navigation from "./components/Navigation";
+import Routes from "./Routes";
+
 
 class App extends React.Component {
   state = {
@@ -18,8 +21,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <Navigation />
         <Nselector />
         <Mquestions />
+        <Routes />
         <div className="resultbtn" onClick={this.togglePop}>
           <button className="resultButton">See the result</button>
         </div>
