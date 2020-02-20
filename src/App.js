@@ -2,13 +2,17 @@ import React from 'react';
 import Mquestions from './components/Mquestions';
 import './App.css';
 import Nselector from "./components/Nselector";
+import PopUp from "./components/Zsgameresult";
 
 class App extends React.Component {
-  getQuestion = async e => {
-    e.preventDefault();
-    const api_call = await fetch(this.apiUrl);
-    const data = await api_call.json();
-    console.log(data);
+  state = {
+    result: false
+  };
+
+  togglePop = () => {
+    this.setState({
+      result: !this.state.result
+    });
   };
 
   render() {
@@ -16,9 +20,14 @@ class App extends React.Component {
       <div>
         <Nselector />
         <Mquestions />
+        <div className="resultbtn" onClick={this.togglePop}>
+          <button className="resultButton">See the result</button>
+        </div>
+        {this.state.result ? <PopUp toggle={this.togglePop} /> : null}
       </div>
     );
   }
 }
 
 export default App;
+

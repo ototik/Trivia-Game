@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './components/Zsgameresult.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import './components/Zsgameresult.js';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
