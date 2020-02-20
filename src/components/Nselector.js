@@ -1,9 +1,10 @@
 import React from "react";
+import history from "./../history"
 
 class Selector extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { number: 10, value: "", difficulty: "", type: "" };
+    this.state = { number: 10, value: "", difficulty: "", type: "", apiUrl: "" };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,27 +30,28 @@ class Selector extends React.Component {
   }
 
   setUrl() {
-    let amount = this.state.number;
-    let category = this.state.value;
-    let difficulty = this.state.difficulty;
-    let type = this.state.type;
-    let apiUrl =
-      "'https://opentdb.com/api.php?amount=" +
-      amount +
-      "&category=" +
-      category +
-      "&difficulty=" +
-      difficulty +
-      "&type=" +
-      type +
-      "&encode=url3986'";
-    return console.log("API url: " + apiUrl);
+    let { number, value, difficulty, type } = this.state
+      this.setState({
+        apiUrl: 'https://opentdb.com/api.php?amount=' +
+                number +
+                '&category=' +
+                value +
+                '&difficulty=' +
+                difficulty +
+                '&type=' +
+                type +
+                '&encode=url3986',
+        
+      })
+      return console.log(this.state.apiUrl);
   }
 
   handleSubmit(event) {
     console.log(this.state);
     event.preventDefault();
     this.setUrl();
+    history.push('/Mquestions');
+    return console.log(this.state.apiUrl)
   }
 
   render() {
@@ -100,7 +102,7 @@ class Selector extends React.Component {
           <option value="multiple">Multiple</option>
           <option value="boolean">True / False</option>
         </select>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Let's play!" />
       </form>
     );
   }
