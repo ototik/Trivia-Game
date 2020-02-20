@@ -8,8 +8,8 @@ export default class Home extends Component {
     return (
       <div className="Home">
         <div className="lander">
-          <h1>Game Selector</h1>
-          <p>Game selector tabs here</p>
+          <h1>Welcome to Trivia</h1>
+          <p>What is your name?</p>
           <form>
             <button class="btn" onClick={() => history.push("/Game")}>
               Go to Game!
