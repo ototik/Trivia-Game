@@ -1,8 +1,5 @@
 import React from 'react';
-import Mquestions from './components/Mquestions';
 import './App.css';
-import Nselector from "./components/Nselector";
-import PopUp from "./components/Zsgameresult";
 import Navigation from "./components/Navigation";
 import Routes from "./Routes";
 
@@ -22,17 +19,18 @@ class App extends React.Component {
     return (
       <div>
         <Navigation />
-        <Nselector />
-        <Mquestions />
+       {/*  <Nselector />
+        <Mquestions /> */}
         <Routes />
-        <div className="resultbtn" onClick={this.togglePop}>
+       {/*  <div className="resultbtn" onClick={this.togglePop}>
           <button className="resultButton">See the result</button>
         </div>
-        {this.state.result ? <PopUp toggle={this.togglePop} /> : null}
+        {this.state.result ? <PopUp toggle={this.togglePop} /> : null} */}
       </div>
     );
   }
 }
+
 
 export default App;
 

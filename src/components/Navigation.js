@@ -11,9 +11,9 @@ const Navigation = props => {
       <a class="active" href="/">
         Home
       </a>
-      <a href="/Game">Game</a>
-      <a href="/Anotherpage">Anotherpage</a>
-      <a href="/Results">Results</a>
+      <a href="/Nselector">Select game</a>
+      <a href="/Mquestions">Game</a>
+      <a href="/Zsgameresult">Results</a>
     </div>
   );
 };
