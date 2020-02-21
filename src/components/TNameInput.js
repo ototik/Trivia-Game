@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import './TNameInput.css';
-import history from "./../history";
+import history from './../history';
 
 class TNameInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playerName: "Dummy",
+      playerName: 'Dummy',
+      displayError: ''
     };
   }
 
   onHandleChange(event) {
     let inp = event.target.value;
-    inp = inp.replace(/[^\w\s]/gi, "");
-    inp = inp.replace(/ /g, "");
+    inp = inp.replace(/[^\w\s]/gi, '');
+    inp = inp.replace(/ /g, '');
 
     this.setState({
       playerName: inp
@@ -21,18 +22,20 @@ class TNameInput extends Component {
   }
 
   onChangePlayerName(event) {
-    history.push('/Nselector');
+    this.state.playerName.length > 3 ? history.push('/Nselector') : this.setState({displayError: 'Please use a longer one'})
   }
 
   render() {
     return (
-      <div>     <h2>Trivia Game</h2>
-        <div className="Tcontainer">
+      <div>     
+        <h2>Trivia Game</h2>
+        <div className='Tcontainer'>
           <label> What is your name?
-            <input type="text" value={this.state.playerName} name="playerName" size="30" minLength={3} maxLength={18} autocomplete="off" required
+            <input type='text' value={this.state.playerName} name='playerName' size='30' minLength={3} maxLength={18} autocomplete='off' required
               onChange={(event) => this.onHandleChange(event)} />
           </label>
           <button onClick={this.onChangePlayerName.bind(this)}>That's me, let's go!</button>
+          <p>{this.state.displayError}</p>
         </div>
       </div>
     );
