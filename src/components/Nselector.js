@@ -1,10 +1,18 @@
 import React from "react";
-import history from "./../history"
+import history from "./../history";
+import data from "./data";
+
+const datafromjson = data;
 
 class Selector extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { number: 10, value: "", difficulty: "", type: "", apiUrl: "" };
+    this.state = {
+      number: 10,
+      value: "",
+      difficulty: "",
+      type: ""
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,34 +37,21 @@ class Selector extends React.Component {
     this.setState({ number: event.target.value });
   }
 
-  setUrl() {
-    let { number, value, difficulty, type } = this.state
-      this.setState({
-        apiUrl: 'https://opentdb.com/api.php?amount=' +
-                number +
-                '&category=' +
-                value +
-                '&difficulty=' +
-                difficulty +
-                '&type=' +
-                type +
-                '&encode=url3986',
-        
-      })
-      return console.log(this.state.apiUrl);
-  }
-
   handleSubmit(event) {
+    var apiUrl = `https://opentdb.com/api.php?amount=${this.state.number}&category=${this.state.value}&difficulty=${this.state.difficulty}&type=${this.state.type}&encode=url3986`;
+    this.setState({ api: apiUrl });
     console.log(this.state);
+    console.log(datafromjson);
     event.preventDefault();
-    this.setUrl();
-    history.push('/Mquestions');
-    return console.log(this.state.apiUrl)
+    history.push("/Mquestions");
+    data.url = apiUrl;
+    return console.log(apiUrl);
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form>
+        <p>Lets choose</p>
         <input
           type="number"
           min="1"
@@ -102,7 +97,7 @@ class Selector extends React.Component {
           <option value="multiple">Multiple</option>
           <option value="boolean">True / False</option>
         </select>
-        <input type="submit" value="Let's play!" />
+        <input type="submit" value="Let's play!" onClick={this.handleSubmit} />
       </form>
     );
   }
