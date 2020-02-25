@@ -1,3 +1,31 @@
+.Mquestions,
+h2,
+p,
+li {
+  font-family: "Pontano Sans";
+}
+
+.buttonBox {
+  position: absolute;
+}
+
+#button1,
+#button2 {
+  display: inline-block;
+  text-align: center;
+}
+
+#button3,
+#button4 {
+  display: inline-block;
+  text-align: center;
+}
+
+body {
+  font-family: "Bebas Neue";
+  background-color: #4ecdc4;
+}
+
 .App {
   text-align: center;
 }

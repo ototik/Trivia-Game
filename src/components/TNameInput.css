@@ -1,28 +1,39 @@
 .Tcontainer {
-    position: fixed; /* or absolute */
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    display: inline-block;
-    border: 1px solid;
-    background-color: lightcoral;
-    font-size: 20px;
-    padding: 15px;
+  position: fixed; /* or absolute */
+  margin-top: 6rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  left: 50%;
+  width: 645px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  border: 3px solid;
+  border-color: white;
+  border-radius: 11px;
+  background-color: #f598a0;
+  font-size: 20px;
+  padding: 15px;
 }
 
 .Tcontainer input {
-    margin: 1rem;
-    padding: 5px;
-    font-size: 15px;
-    border: 1px solid black;
+  margin: 1rem;
+  padding: 5px;
+  font-size: 15px;
+  border: 1px solid black;
 }
 
-.TsubBtn {
-    background-color: rgb(233, 68, 68);
-    font-weight: bold;
-    padding: 12px 15px;
-    color: #ffffff;
+.inputButton {
+  height: 25px;
+  width: 150px;
 }
 
+.inputLabel {
+  padding-left: 1.1rem;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
