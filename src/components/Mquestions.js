@@ -41,7 +41,7 @@ class Mquestions extends React.Component {
                                 [apidata.results[current].correct_answer]].sort(() => Math.random() - 0.5),
                     cor_answer: apidata.results[current].correct_answer,           
                     max:        apidata.results.length,
-                    current:    current + 1,
+                    current:    current === 9 ? current : current + 1,
                 })     
         }
         else {
@@ -51,7 +51,7 @@ class Mquestions extends React.Component {
                                 ["False"]],
                     cor_answer: apidata.results[current].correct_answer,           
                     max:        apidata.results.length,
-                    current:    current + 1,
+                    current:    current === 9 ? current : current + 1,
             }) 
             console.log(this.state.apidata.results[current].type)
         }       

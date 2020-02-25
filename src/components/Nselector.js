@@ -14,12 +14,19 @@ class Selector extends React.Component {
   }
 
   handleChange(event) {
+    console.log("change happened1", event.target.value, this.state.value)
     this.setState({ value: event.target.value });
+    console.log("change happened", event.target.value, this.state.value)
   }
 
-  handleDiff(event) {
-    this.setState({ difficulty: event.target.value });
+
+  handleDiff = (event) => {
+    console.log("change happened1", event.target.difficulty, this.state.difficulty)
+    const diff = event.target.value
+    this.setState({ difficulty: diff});
+    console.log("change happened", event.target.value, this.state.difficulty)
   }
+  
 
   handleType(event) {
     this.setState({ type: event.target.value });
@@ -32,26 +39,16 @@ class Selector extends React.Component {
   setUrl() {
     let { number, value, difficulty, type } = this.state
       this.setState({
-        apiUrl: 'https://opentdb.com/api.php?amount=' +
-                number +
-                '&category=' +
-                value +
-                '&difficulty=' +
-                difficulty +
-                '&type=' +
-                type +
-                '&encode=url3986',
-        
+        apiUrl: `https://opentdb.com/api.php?amount=${number}&category=${value}&difficulty=${difficulty}&type=${type}&encode=url3986`,   
       })
-      return console.log(this.state.apiUrl);
+      return console.log(this.state.apiUrl, 'apiURL', number, value, difficulty, type);
   }
 
   handleSubmit(event) {
-    console.log(this.state);
     event.preventDefault();
     this.setUrl();
     history.push('/Mquestions');
-    return console.log(this.state.apiUrl)
+ 
   }
 
   render() {

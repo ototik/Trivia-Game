@@ -7,8 +7,8 @@ const Navigation = props => {
   console.log(props);
 
   return (
-    <div class="topnav">
-      <a class="active" href="/">
+    <div className="topnav">
+      <a className="active" href="/">
         Home
       </a>
       <a href="/Nselector">Select game</a>
