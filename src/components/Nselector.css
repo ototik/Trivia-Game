@@ -1,32 +1,4 @@
-.Tcontainer {
-  position: fixed; /* or absolute */
-  margin-top: 6rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  left: 50%;
-  width: 645px;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  display: flex;
-  border: 3px solid;
-  border-color: white;
-  border-radius: 11px;
-  background-color: #f598a0;
-  font-size: 20px;
-  padding: 15px;
-  justify-content: space-around;
-}
-
-.Tcontainer input {
-  margin: 1rem;
-  padding: 5px;
-  font-size: 18px;
-  border: 1px solid black;
-}
-
-.inputButton {
-  height: 60px;
-  width: 120px;
+.button {
   -moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
   -webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
   box-shadow: inset 0px 1px 0px 0px #fce2c1;
@@ -57,20 +29,19 @@
   display: inline-block;
   color: #ffffff;
   font-family: Arial;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: bold;
   font-style: normal;
   margin: 0.5rem;
   padding-top: 10px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   padding-left: 15px;
   padding-right: 15px;
   text-decoration: none;
   text-align: center;
   text-shadow: 1px 1px 0px #cc9f52;
 }
-
-.inputButton:hover {
+.button:hover {
   background: -webkit-gradient(
     linear,
     left top,
@@ -82,19 +53,28 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
   background-color: #fb9e25;
 }
-
-.inputButton:active {
+.button:active {
   position: relative;
   top: 1px;
 }
 
-.inputLabel {
-  padding-left: 1.1rem;
-  margin-top: 7px;
-}
-
-.logo {
-  display: block;
+#form {
+  font-family: "Pontano Sans";
+  font-weight: 700;
+  font-size: large;
+  text-align: center;
+  justify-content: space-around;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 60px;
+}
+
+#chooseName {
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.params {
+  margin-bottom: 1rem;
+  font-family: "Pontano Sans";
 }

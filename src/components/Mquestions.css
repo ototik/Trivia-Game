@@ -1,0 +1,49 @@
+#button1,
+#button2,
+#button3,
+#button4 {
+  -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+  -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.05, #ededed),
+    color-stop(1, #dfdfdf)
+  );
+  background: -moz-linear-gradient(center top, #ededed 5%, #dfdfdf 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+  background-color: #ededed;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-left-radius: 5px;
+  text-indent: 0px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  color: #777777;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  font-style: normal;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-decoration: none;
+  text-align: center;
+  text-shadow: 1px 1px 0px #ffffff;
+}
+
+.p {
+  font-size: 20;
+}
