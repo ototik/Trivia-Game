@@ -1,7 +1,7 @@
 import React from "react";
 import history from "./../history";
 import data from "./data";
-import Nselector from "./Nselector.css";
+import "./Nselector.css";
 
 const datafromjson = data;
 
@@ -56,6 +56,10 @@ class Selector extends React.Component {
     return console.log(apiUrl);
   }
 
+  componentDidMount(){
+    this.select1.focus();
+  }
+
   render() {
     return (
       <div id="form">
@@ -63,9 +67,11 @@ class Selector extends React.Component {
         <div>
           <label>Category: </label>
           <select
+            id="select1"
             className="params"
             value={this.state.value}
             onChange={this.handleChange}
+            ref={(select1) => { this.select1 = select1; }}
           >
             <option value="">Any Category</option>
             <option value="9">General Knowledge</option>
