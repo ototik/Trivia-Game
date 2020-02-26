@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import data from "./data";
 import { Link } from "react-router-dom";
-const TA = "https://media.giphy.com/media/MeIucAjPKoA120R7sN/giphy.gif";
+
 export default class PopUp extends Component {
   Grade = () => {
     if (data.score < data.max * 0.3) {
