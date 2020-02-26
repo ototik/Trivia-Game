@@ -22,12 +22,19 @@ class Selector extends React.Component {
   }
 
   handleChange(event) {
+    console.log("change happened1", event.target.value, this.state.value)
     this.setState({ value: event.target.value });
+    console.log("change happened", event.target.value, this.state.value)
   }
 
-  handleDiff(event) {
-    this.setState({ difficulty: event.target.value });
+
+  handleDiff = (event) => {
+    console.log("change happened1", event.target.difficulty, this.state.difficulty)
+    const diff = event.target.value
+    this.setState({ difficulty: diff});
+    console.log("change happened", event.target.value, this.state.difficulty)
   }
+  
 
   handleType(event) {
     this.setState({ type: event.target.value });
