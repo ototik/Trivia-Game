@@ -39,6 +39,7 @@ class Mquestions extends React.Component {
       data.max = max;
       data.cor_answer = cor_answer;
       console.log(data.score);
+      console.log("Elso if: ", current);
       history.push("/Zsgameresult");
     } else {
       if (apidata.results[current].type === "multiple") {
@@ -54,6 +55,7 @@ class Mquestions extends React.Component {
           max: apidata.results.length,
           current: current + 1
         });
+        console.log("Multiple: ", current);
       } else {
         this.setState({
           question: apidata.results[current].question,
@@ -63,6 +65,7 @@ class Mquestions extends React.Component {
           current: current + 1
         });
         console.log(this.state.apidata.results[current].type);
+        console.log("True/false: ", current);
       }
     }
   }
