@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import data from "./data";
 import history from "./../history";
+import "./Mquestions.css";
 
 const datafromjson = data;
 class Mquestions extends React.Component {

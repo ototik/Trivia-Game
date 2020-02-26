@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 const Navigation = props => {
   console.log(props);
 
-  return <div className="topnav"></div>;
+  return null;
 };
 
 export default withRouter(Navigation);

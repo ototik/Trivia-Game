@@ -26,7 +26,7 @@ class TNameInput extends Component {
   onChangePlayerName(event) {
     this.state.playerName.length >= 3
       ? history.push("/Nselector")
-      : this.setState({ displayError: "Please use minimum 3 characters!" });
+      : this.setState(alert("Please use minimum 3 characters!"));
   }
 
   render() {
@@ -36,10 +36,11 @@ class TNameInput extends Component {
           <img className="logo" src={trivia} alt="Trivia logo" />
         </div>{" "}
         <div className="Tcontainer">
-          <label className="inputLabel">
+          <div className="inputLabel">
             {" "}
             What is your name?
             <input
+              id="input"
               type="text"
               value={this.state.playerName}
               name="playerName"
@@ -50,14 +51,13 @@ class TNameInput extends Component {
               required
               onChange={event => this.onHandleChange(event)}
             />
-            <button
-              className="inputButton"
-              onClick={this.onChangePlayerName.bind(this)}
-            >
-              That's me, let's go!
-            </button>
-          </label>
-          <p>{this.state.displayError}</p>
+          </div>
+          <button
+            className="inputButton"
+            onClick={this.onChangePlayerName.bind(this)}
+          >
+            That's me, let's go!
+          </button>
         </div>
       </div>
     );
