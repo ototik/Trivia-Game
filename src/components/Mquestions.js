@@ -118,7 +118,7 @@ class Mquestions extends React.Component {
   };
 
   render() {
-    let { current, max, score, question } = this.state;
+    let { current, max, question } = this.state;
     return (
       <div className="Mquestions">
         <div id="questionsContainer">

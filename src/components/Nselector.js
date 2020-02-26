@@ -1,7 +1,7 @@
 import React from "react";
 import history from "./../history";
 import data from "./data";
-import Nselector from "./Nselector.css";
+import "./Nselector.css";
 
 const datafromjson = data;
 
@@ -62,7 +62,7 @@ class Selector extends React.Component {
     return (
       <div id="form">
         <p id="chooseName">CHOOSE YOUR GAME:</p>
-        <div className="Kati">
+        <div className="Category">
           <label>Category: </label>
           <select
             className="params"
@@ -146,7 +146,7 @@ class Selector extends React.Component {
             </option>
           </select>
         </div>
-        <div className="Kati">
+        <div className="Category">
           <label className="params2">Number of questions: </label>
           <input
             className="params"
@@ -157,7 +157,7 @@ class Selector extends React.Component {
             value={this.state.number}
           ></input>
         </div>
-        <div className="Kati">
+        <div className="Category">
           <label>Difficulty: </label>
           <select
             className="params"
@@ -178,7 +178,7 @@ class Selector extends React.Component {
             </option>
           </select>
         </div>
-        <div className="Kati">
+        <div className="Category">
           <label>Type: </label>
           <select
             className="params"
