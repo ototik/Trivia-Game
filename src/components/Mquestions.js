@@ -33,8 +33,6 @@ class Mquestions extends React.Component {
                     apidata: data
                 });
                 this.getQuestion();
-
-
             });
     }
 
@@ -73,15 +71,13 @@ class Mquestions extends React.Component {
             cor_answer: apidata.results[current].correct_answer,
             max: apidata.results.length,
             current: current + 1,
-
         });
     }
 
     isRightAnswer() {
         this.setState({
             score: this.state.score + 1
-        }
-        );
+        });
     }
 
     displayResults() {
@@ -89,7 +85,6 @@ class Mquestions extends React.Component {
         data.score = score;
         data.max = max;
         data.cor_answer = cor_answer;
-        console.log(data.score, this.state.current, "current");
         history.push("/Zsgameresult");
     }
     /*fixed the results display to update the score before displaying the results, if someone can come up with something cleaner feel free to modify*/
@@ -111,7 +106,7 @@ class Mquestions extends React.Component {
             this.displayResults()
         }
     }
-
+    
     render() {
         let { current, max, score, question } = this.state;
         return (
@@ -125,7 +120,7 @@ class Mquestions extends React.Component {
                 <div className="buttonBox">
                 { /*made the buttons display dynamic*/ 
                     this.state.answers.map(element => {
-                    return <div><button onClick={this.handleOnClick}> 
+                    return <div key={element}><button onClick={this.handleOnClick}> 
                         {decodeURIComponent(element)}                
                         </button></div>
                     })

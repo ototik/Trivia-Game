@@ -28,14 +28,14 @@
 }
 
 .modal_content {
-  background-color: white;
+  background-color: #f598a0;
   position: absolute;
   top: 20%;
   left: 30%;
   width: 40%;
   padding: 20px;
   border-radius: 5px;
-  border: 2px solid black;
+  border: 2px solid white;
 }
 
 .close {
@@ -52,7 +52,10 @@
   font-size: 40px;
   font-weight: 800;
   text-align: center;
-  color: red;
+  color: black;
+}
+#Grade {
+  font-family: "Bebas Neue";
 }
 
 .earned-score {

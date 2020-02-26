@@ -58,7 +58,7 @@ class Selector extends React.Component {
   render() {
     return (
       <form>
-        <p>Lets choose</p>
+        <p>Choose your game:</p>
         <input
           type="number"
           min="1"

@@ -3,5 +3,6 @@
   "cor_answer": [""],
   "score": [0],
   "max": [0],
-  "playerNamePopup": [""]
+  "playerNamePopup": [""],
+  "valueSelector": [0, 9]
 }
