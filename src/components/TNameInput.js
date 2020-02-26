@@ -29,13 +29,17 @@ class TNameInput extends Component {
       : this.setState(alert("Please use minimum 3 characters!"));
   }
 
+  componentDidMount(){
+    this.input.focus();
+  }
+
   render() {
     return (
       <div>
         <div className="img-container">
           <img className="logo" src={trivia} alt="Trivia logo" />
         </div>{" "}
-        <div className="Tcontainer">
+        <form className="Tcontainer" onSubmit={this.onChangePlayerName.bind(this)} >
           <div className="inputLabel">
             {" "}
             What is your name?
@@ -50,15 +54,16 @@ class TNameInput extends Component {
               autoComplete="off"
               required
               onChange={event => this.onHandleChange(event)}
+              ref={(input) => { this.input = input; }} 
             />
           </div>
           <button
+            type="submit"
             className="inputButton"
-            onClick={this.onChangePlayerName.bind(this)}
           >
             That's me, let's go!
           </button>
-        </div>
+        </form>
       </div>
     );
   }
