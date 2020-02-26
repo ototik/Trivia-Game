@@ -7,10 +7,10 @@ export default class PopUp extends Component {
     if (data.score < data.max * 0.3) {
       return (
         <div>
-          <p>Try again!</p>
+          <p className="Zsp">Try again!</p>
           <img
             src="https://i.imgur.com/eVm4RUM.gif"
-            height="80"
+            height="180vh"
             alt="Stupid Hooman"
           />
         </div>
@@ -18,10 +18,10 @@ export default class PopUp extends Component {
     } else if (data.score >= data.max * 0.3 && data.score <= data.max * 0.4) {
       return (
         <div>
-          <p>That's not bad!</p>
+          <p className="Zsp">That's not bad!</p>
           <img
             src="https://media.giphy.com/media/SRO0ZwmImic0/giphy.gif"
-            height="80"
+            height="180vh"
             alt="Kitty cat"
           />
         </div>
@@ -29,10 +29,10 @@ export default class PopUp extends Component {
     } else if (data.score >= data.max * 0.5 && data.score <= data.max * 0.8) {
       return (
         <div>
-          <p>That's pretty good!</p>
+          <p className="Zsp">That's pretty good!</p>
           <img
             src="https://media.giphy.com/media/IRFQYGCokErS0/giphy.gif"
-            height="80"
+            height="180vh"
             alt="Cat"
           />
         </div>
@@ -40,10 +40,10 @@ export default class PopUp extends Component {
     } else {
       return (
         <div>
-          <p>You are a champion!</p>
+          <p className="Zsp">You are a champion!</p>
           <img
             src="https://media.giphy.com/media/MeIucAjPKoA120R7sN/giphy.gif"
-            height="80"
+            height="180vh"
             alt="Rabbit"
           />
         </div>
@@ -67,7 +67,9 @@ export default class PopUp extends Component {
             You have {data.score}/{data.max} correct answers!
           </div>
           <Link to="/">
-            <button>Play again!</button>
+            <button className="button" id="PA">
+              Play again!
+            </button>
           </Link>
         </div>
       </div>

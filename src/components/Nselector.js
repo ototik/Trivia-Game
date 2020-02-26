@@ -23,19 +23,21 @@ class Selector extends React.Component {
   }
 
   handleChange(event) {
-    console.log("change happened1", event.target.value, this.state.value)
+    console.log("change happened1", event.target.value, this.state.value);
     this.setState({ value: event.target.value });
-    console.log("change happened", event.target.value, this.state.value)
+    console.log("change happened", event.target.value, this.state.value);
   }
 
-
-  handleDiff = (event) => {
-    console.log("change happened1", event.target.difficulty, this.state.difficulty)
-    const diff = event.target.value
-    this.setState({ difficulty: diff});
-    console.log("change happened", event.target.value, this.state.difficulty)
-  }
-  
+  handleDiff = event => {
+    console.log(
+      "change happened1",
+      event.target.difficulty,
+      this.state.difficulty
+    );
+    const diff = event.target.value;
+    this.setState({ difficulty: diff });
+    console.log("change happened", event.target.value, this.state.difficulty);
+  };
 
   handleType(event) {
     this.setState({ type: event.target.value });
@@ -60,44 +62,92 @@ class Selector extends React.Component {
     return (
       <div id="form">
         <p id="chooseName">CHOOSE YOUR GAME:</p>
-        <div>
+        <div className="Kati">
           <label>Category: </label>
           <select
             className="params"
             value={this.state.value}
             onChange={this.handleChange}
           >
-            <option value="">Any Category</option>
-            <option value="9">General Knowledge</option>
-            <option value="10">Entertainment: Books</option>
-            <option value="11">Entertainment: Film</option>
-            <option value="12">Entertainment: Music</option>
-            <option value="13">Entertainment: Musicals &amp; Theatres</option>
-            <option value="14">Entertainment: Television</option>
-            <option value="15">Entertainment: Video Games</option>
-            <option value="16">Entertainment: Board Games</option>
-            <option value="17">Science &amp; Nature</option>
-            <option value="18">Science: Computers</option>
-            <option value="19">Science: Mathematics</option>
-            <option value="20">Mythology</option>
-            <option value="21">Sports</option>
-            <option value="22">Geography</option>
-            <option value="23">History</option>
-            <option value="24">Politics</option>
-            <option value="25">Art</option>
-            <option value="26">Celebrities</option>
-            <option value="27">Animals</option>
-            <option value="28">Vehicles</option>
-            <option value="29">Entertainment: Comics</option>
-            <option value="30">Science: Gadgets</option>
-            <option value="31">
+            <option id="input" value="">
+              Any Category
+            </option>
+            <option id="input" value="9">
+              General Knowledge
+            </option>
+            <option id="input" value="10">
+              Entertainment: Books
+            </option>
+            <option id="input" value="11">
+              Entertainment: Film
+            </option>
+            <option id="input" value="12">
+              Entertainment: Music
+            </option>
+            <option id="input" value="13">
+              Entertainment: Musicals &amp; Theatres
+            </option>
+            <option id="input" value="14">
+              Entertainment: Television
+            </option>
+            <option id="input" value="15">
+              Entertainment: Video Games
+            </option>
+            <option id="input" value="16">
+              Entertainment: Board Games
+            </option>
+            <option id="input" value="17">
+              Science &amp; Nature
+            </option>
+            <option id="input" value="18">
+              Science: Computers
+            </option>
+            <option id="input" value="19">
+              Science: Mathematics
+            </option>
+            <option id="input" value="20">
+              Mythology
+            </option>
+            <option id="input" value="21">
+              Sports
+            </option>
+            <option id="input" value="22">
+              Geography
+            </option>
+            <option id="input" value="23">
+              History
+            </option>
+            <option id="input" value="24">
+              Politics
+            </option>
+            <option id="input" value="25">
+              Art
+            </option>
+            <option id="input" value="26">
+              Celebrities
+            </option>
+            <option id="input" value="27">
+              Animals
+            </option>
+            <option id="input" value="28">
+              Vehicles
+            </option>
+            <option id="input" value="29">
+              Entertainment: Comics
+            </option>
+            <option id="input" value="30">
+              Science: Gadgets
+            </option>
+            <option id="input" value="31">
               Entertainment: Japanese Anime &amp; Manga
             </option>
-            <option value="32">Entertainment: Cartoon &amp; Animations</option>
+            <option id="input" value="32">
+              Entertainment: Cartoon &amp; Animations
+            </option>
           </select>
         </div>
-        <div className="params">
-          <label className="params">Number of questions: </label>
+        <div className="Kati">
+          <label className="params2">Number of questions: </label>
           <input
             className="params"
             type="number"
@@ -107,29 +157,43 @@ class Selector extends React.Component {
             value={this.state.number}
           ></input>
         </div>
-        <div className="params">
+        <div className="Kati">
           <label>Difficulty: </label>
           <select
             className="params"
             value={this.state.difficulty}
             onChange={this.handleDiff}
           >
-            <option value="">Any Difficulty</option>
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
+            <option id="input" value="">
+              Any Difficulty
+            </option>
+            <option id="input" value="easy">
+              Easy
+            </option>
+            <option id="input" value="medium">
+              Medium
+            </option>
+            <option id="input" value="hard">
+              Hard
+            </option>
           </select>
         </div>
-        <div className="params">
+        <div className="Kati">
           <label>Type: </label>
           <select
             className="params"
             value={this.state.type}
             onChange={this.handleType}
           >
-            <option value="any">Any Type</option>
-            <option value="multiple">Multiple</option>
-            <option value="boolean">True / False</option>
+            <option id="input" value="any">
+              Any Type
+            </option>
+            <option id="input" value="multiple">
+              Multiple
+            </option>
+            <option id="input" value="boolean">
+              True / False
+            </option>
           </select>
         </div>
         <button

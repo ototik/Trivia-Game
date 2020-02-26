@@ -38,7 +38,7 @@ class TNameInput extends Component {
         <div className="Tcontainer">
           <div className="inputLabel">
             {" "}
-            What is your name?
+            <p id="inputName"> What is your name?</p>
             <input
               id="input"
               type="text"
@@ -51,13 +51,13 @@ class TNameInput extends Component {
               required
               onChange={event => this.onHandleChange(event)}
             />
+            <button
+              className="inputButton"
+              onClick={this.onChangePlayerName.bind(this)}
+            >
+              That's me, let's go!
+            </button>
           </div>
-          <button
-            className="inputButton"
-            onClick={this.onChangePlayerName.bind(this)}
-          >
-            That's me, let's go!
-          </button>
         </div>
       </div>
     );
