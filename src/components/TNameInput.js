@@ -46,7 +46,7 @@ class TNameInput extends Component {
               size="30"
               minLength={3}
               maxLength={18}
-              autocomplete="off"
+              autoComplete="off"
               required
               onChange={event => this.onHandleChange(event)}
             />
