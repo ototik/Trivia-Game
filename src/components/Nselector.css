@@ -74,6 +74,14 @@
   font-size: 40px;
   font-family: "Bebas Neue";
 }
+input.params::-ms-browse {
+  font-family: "Pontano Sans";
+  margin: 0.75rem 8.5rem 0.75rem 8.5rem;
+  padding: 5px;
+  font-size: 18px;
+  border: 1px solid black;
+  border-radius: 6px;
+}
 
 .params {
   margin-bottom: 1rem;

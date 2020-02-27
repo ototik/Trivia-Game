@@ -65,7 +65,7 @@ export default class PopUp extends Component {
           <div className="earned-score">
             You have {data.score}/{data.max} correct answers!
           </div>
-          <Link to="/">
+          <Link to="/Nselector">
             <button className="button" id="PA">
               Play again!
             </button>
