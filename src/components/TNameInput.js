@@ -42,7 +42,7 @@ class TNameInput extends Component {
         <form className="Tcontainer" onSubmit={this.onChangePlayerName.bind(this)} >
           <div className="inputLabel">
             {" "}
-            What is your name?
+            <p id="inputName"> What is your name?</p>
             <input
               id="input"
               type="text"

@@ -1,6 +1,6 @@
 .Tcontainer {
   position: fixed; /* or absolute */
-  margin-top: 6rem;
+  margin-top: 9.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   left: 50%;
@@ -19,14 +19,14 @@
 
 .Tcontainer input {
   margin: 1rem;
+  display: grid;
   padding: 5px;
   font-size: 18px;
   border: 1px solid black;
+  border-radius: 6px;
 }
 
 .inputButton {
-  height: 60px;
-  width: 120px;
   -moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
   -webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
   box-shadow: inset 0px 1px 0px 0px #fce2c1;
@@ -62,7 +62,7 @@
   font-style: normal;
   margin: 0.5rem;
   padding-top: 10px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   padding-left: 15px;
   padding-right: 15px;
   text-decoration: none;
@@ -97,4 +97,9 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+#inputName {
+  font-size: 40px;
+  margin: 0;
 }
