@@ -57,7 +57,7 @@ class Selector extends React.Component {
   }
 
   componentDidMount(){
-    this.select1.focus();
+    this.select.focus();
   }
 
   render() {
@@ -67,11 +67,11 @@ class Selector extends React.Component {
         <div>
           <label>Category: </label>
           <select
-            id="select1"
+            id="select"
             className="params"
             value={this.state.value}
             onChange={this.handleChange}
-            ref={(select1) => { this.select1 = select1; }}
+            ref={(select) => { this.select = select; }}
           >
             <option value="">Any Category</option>
             <option value="9">General Knowledge</option>

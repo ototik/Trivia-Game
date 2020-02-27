@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import data from "./data";
 import { Link } from "react-router-dom";
-const TA = "https://media.giphy.com/media/MeIucAjPKoA120R7sN/giphy.gif";
+//const TA = "https://media.giphy.com/media/MeIucAjPKoA120R7sN/giphy.gif";
 export default class PopUp extends Component {
   Grade = () => {
     if (data.score < data.max * 0.3) {
@@ -51,6 +51,10 @@ export default class PopUp extends Component {
     }
   };
 
+  componentDidMount(){
+    this.playAgainButton.focus();
+  }
+
   //Need to use the player name
   render() {
     return (
@@ -67,7 +71,7 @@ export default class PopUp extends Component {
             You have {data.score}/{data.max} correct answers!
           </div>
           <Link to="/">
-            <button>Play again!</button>
+            <button id="playAgainButton" ref={(playAgainButton) => { this.playAgainButton = playAgainButton; }}>Play again!</button>
           </Link>
         </div>
       </div>

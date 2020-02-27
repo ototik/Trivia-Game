@@ -26,6 +26,7 @@ class Mquestions extends React.Component {
     }
 
     componentDidMount() {
+        
         axios
             .get(datafromjson.url)
             .then(response => response.data)
@@ -118,10 +119,10 @@ class Mquestions extends React.Component {
                     </h2>
                     <p>{decodeURIComponent(question)}</p>
                 </div>
-                <div className="buttonBox">
+                <div className="buttonBox" >
                 { /*made the buttons display dynamic*/ 
-                    this.state.answers.map(element => {
-                    return <div key={element}><button onClick={this.handleOnClick}> 
+                    this.state.answers.map((element) => {
+                    return <div key={element}> <button onClick={this.handleOnClick} > 
                         {decodeURIComponent(element)}                
                         </button></div>
                     })
