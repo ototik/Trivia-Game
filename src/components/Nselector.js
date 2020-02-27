@@ -3,8 +3,6 @@ import history from "./../history";
 import data from "./data";
 import "./Nselector.css";
 
-const datafromjson = data;
-
 class Selector extends React.Component {
   constructor(props) {
     super(props);
@@ -51,7 +49,6 @@ class Selector extends React.Component {
     var apiUrl = `https://opentdb.com/api.php?amount=${this.state.number}&category=${this.state.value}&difficulty=${this.state.difficulty}&type=${this.state.type}&encode=url3986`;
     this.setState({ api: apiUrl });
     console.log(this.state);
-    console.log(datafromjson);
     event.preventDefault();
     history.push("/Mquestions");
     data.url = apiUrl;
@@ -154,14 +151,19 @@ class Selector extends React.Component {
         </div>
         <div className="Category">
           <label className="params2">Number of questions: </label>
-          <input
+          {/*          <input
             className="params"
             type="number"
             min="1"
             max="50"
             onChange={this.handleQuestionNum}
             value={this.state.number}
-          ></input>
+          ></input> */}
+          <select onChange={this.handleQuestionNum} value={this.state.number}>
+            {data.questionNumber.map(numbers => {
+              return <option>{numbers}</option>;
+            })}
+          </select>
         </div>
         <div className="Category">
           <label>Difficulty: </label>
