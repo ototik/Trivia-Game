@@ -1,49 +1,53 @@
-#button1,
-#button2,
-#button3,
-#button4 {
-  -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
-  -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-  box-shadow: inset 0px 1px 0px 0px #ffffff;
+.p {
+  font-size: 20;
+}
+
+.answerButton {
+  width: 100%;
+  height: 50px;
+  border-radius: 6px;
+  border-style: none;
+  font-size: medium;
+}
+
+.answerButton:hover {
   background: -webkit-gradient(
     linear,
     left top,
     left bottom,
-    color-stop(0.05, #ededed),
-    color-stop(1, #dfdfdf)
+    color-stop(0.05, #abacac),
+    color-stop(1, #838282)
   );
-  background: -moz-linear-gradient(center top, #ededed 5%, #dfdfdf 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
-  background-color: #ededed;
-  -webkit-border-top-left-radius: 5px;
-  -moz-border-radius-topleft: 5px;
-  border-top-left-radius: 5px;
-  -webkit-border-top-right-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  border-top-right-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  -moz-border-radius-bottomright: 5px;
-  border-bottom-right-radius: 5px;
-  -webkit-border-bottom-left-radius: 5px;
-  -moz-border-radius-bottomleft: 5px;
-  border-bottom-left-radius: 5px;
-  text-indent: 0px;
-  border: 1px solid #dcdcdc;
-  display: inline-block;
-  color: #777777;
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: bold;
-  font-style: normal;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  text-decoration: none;
-  text-align: center;
-  text-shadow: 1px 1px 0px #ffffff;
+  background: -moz-linear-gradient(center top, #abacac 5%, #838282 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#abacac', endColorstr='#838282');
+  background-color: #abacac;
 }
 
-.p {
-  font-size: 20;
+.buttonBoxContainer {
+  justify-content: center;
+}
+
+.buttonBox {
+  height: 50%;
+  display: grid;
+  grid-template-columns: 40% 40%;
+  grid-gap: 15px;
+  height: 100px;
+  justify-content: center;
+}
+
+#questionsContainer {
+  width: 78%;
+  text-align: center;
+  border: 3px solid;
+  border-color: white;
+  border-radius: 11px;
+  background-color: #f598a0;
+  font-size: 20px;
+  padding: 15px;
+  margin: 30px auto 50px auto;
+}
+
+#loadingSpinner {
+text-align: center;
 }
