@@ -7,6 +7,7 @@ import Loader from 'react-loader-spinner';
 
 const datafromjson = data;
 class Mquestions extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -28,6 +29,7 @@ class Mquestions extends React.Component {
     this.displayResults = this.displayResults.bind(this);
   }
 
+
   componentDidMount() {
     axios
       .get(datafromjson.url)
@@ -42,7 +44,7 @@ class Mquestions extends React.Component {
   }
 
   getQuestion() {
-    let { current, apidata } = this.state;
+    let { current, apidata } = this.state;   
     if (apidata.results[current].type === "multiple") {
       this.isMultiple();
     } else {
@@ -97,24 +99,23 @@ class Mquestions extends React.Component {
       this.state.cor_answer === event.target.innerText &&
       apidata.results.length !== current
     ) {
-      this.isRightAnswer();
+      setTimeout(() => this.isRightAnswer(), 2000);
     } else if (
       this.state.cor_answer !== event.target.innerText &&
       apidata.results.length !== current
     ) {
-      this.getQuestion();
+      setTimeout(() => this.getQuestion(), 2000)
     } else if (
       this.state.cor_answer === event.target.innerText &&
       apidata.results.length === current
     ) {
-      this.setState({ score: this.state.score + 1 }, () =>
-        this.displayResults()
-      );
+      setTimeout(() => this.setState({ score: this.state.score + 1 }, () =>
+        this.displayResults()), 2000)
     } else if (
       this.state.cor_answer !== event.target.innerText &&
       apidata.results.length === current
     ) {
-      this.displayResults();
+      setTimeout(() => this.displayResults(), 2000)
     }
   };
   /*added loading spinner*/

@@ -50,6 +50,10 @@ export default class PopUp extends Component {
     }
   };
 
+  componentDidMount(){
+    this.playAgainButton.focus();
+  }
+
   //Need to use the player name
   render() {
     return (
@@ -65,8 +69,8 @@ export default class PopUp extends Component {
           <div className="earned-score">
             You have {data.score}/{data.max} correct answers!
           </div>
-          <Link to="/">
-            <button className="button" id="PA">
+          <Link to="/Nselector">
+            <button id="playAgainButton" ref={(playAgainButton) => { this.playAgainButton = playAgainButton; }}>
               Play again!
             </button>
           </Link>
