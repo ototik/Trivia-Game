@@ -16,7 +16,8 @@ class Mquestions extends React.Component {
       current: 0,
       max: 0,
       score: 0,
-      apidata: ""
+      apidata: "",
+      
     };
     this.getQuestion = this.getQuestion.bind(this);
     this.isRightAnswer = this.isRightAnswer.bind(this);
@@ -62,7 +63,7 @@ class Mquestions extends React.Component {
       ].sort(() => Math.random() - 0.5),
       cor_answer: correctAnswer,
       max: apidata.results.length,
-      current: current + 1
+      current: current + 1,
     });
   }
 
@@ -139,12 +140,10 @@ class Mquestions extends React.Component {
         </div>
         <div className="buttonBoxContainer">
           <div className="buttonBox">
-            {/*made the buttons display dynamic*/
-
-            this.state.answers.map(element => {
+            {this.state.answers.map(element => {
               return (
                 <div key={element} >
-                  <button className="answerButton" onClick={this.handleOnClick}>
+                  <button className="answerButton" onClick={this.handleOnClick} >
                     {decodeURIComponent(element)}
                   </button>
 
