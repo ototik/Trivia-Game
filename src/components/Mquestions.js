@@ -40,7 +40,7 @@ class Mquestions extends React.Component {
   }
 
   getQuestion() {
-    let { current, apidata } = this.state;
+    let { current, apidata } = this.state;   
     if (apidata.results[current].type === "multiple") {
       this.isMultiple();
     } else {
@@ -81,6 +81,7 @@ class Mquestions extends React.Component {
     this.setState({
       score: this.state.score + 1
     });
+    this.getQuestion()
   }
 
   displayResults() {
@@ -97,30 +98,37 @@ class Mquestions extends React.Component {
       this.state.cor_answer === event.target.innerText &&
       apidata.results.length !== current
     ) {
-      this.isRightAnswer();
-      this.getQuestion();
+      event.target.style.backgroundColor= 'green';
+      setTimeout(() => this.isRightAnswer(), 2000)
     } else if (
       this.state.cor_answer !== event.target.innerText &&
       apidata.results.length !== current
     ) {
-      this.getQuestion();
+      event.target.style.backgroundColor= 'red';
+      setTimeout(() => this.getQuestion(), 2000)
     } else if (
       this.state.cor_answer === event.target.innerText &&
       apidata.results.length === current
     ) {
-      this.setState({ score: this.state.score + 1 }, () =>
+      event.target.style.backgroundColor= 'green';
+      setTimeout(() => this.setState({ score: this.state.score + 1 }, () =>
         this.displayResults()
-      );
+      ), 2000)
     } else if (
       this.state.cor_answer !== event.target.innerText &&
       apidata.results.length === current
     ) {
-      this.displayResults();
+      event.target.style.backgroundColor= 'red';
+      setTimeout(() => this.displayResults(), 2000)
     }
   };
 
+
   render() {
     let { current, max, question } = this.state;
+
+    
+
     return (
       <div className="Mquestions">
         <div id="questionsContainer">
@@ -135,7 +143,7 @@ class Mquestions extends React.Component {
 
             this.state.answers.map(element => {
               return (
-                <div key={element}>
+                <div key={element} >
                   <button className="answerButton" onClick={this.handleOnClick}>
                     {decodeURIComponent(element)}
                   </button>
