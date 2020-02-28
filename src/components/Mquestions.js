@@ -7,7 +7,6 @@ import Loader from 'react-loader-spinner';
 
 const datafromjson = data;
 class Mquestions extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -28,8 +27,6 @@ class Mquestions extends React.Component {
     this.isMultiple = this.isMultiple.bind(this);
     this.displayResults = this.displayResults.bind(this);
   }
-
-
   componentDidMount() {
     axios
       .get(datafromjson.url)
@@ -42,20 +39,19 @@ class Mquestions extends React.Component {
         this.getQuestion();
       });
   }
-
   getQuestion() {
-    let { current, apidata } = this.state;   
+    let { current, apidata } = this.state;
     if (apidata.results[current].type === "multiple") {
       this.isMultiple();
     } else {
       this.isBoolean();
     }
   }
-  /*creating the answers array with map*/ 
+  /*creating the answers array with map*/
   isMultiple() {
     let { current, apidata } = this.state;
     let answersApi = apidata.results[current].incorrect_answers.concat(apidata.results[current].correct_answer)
-    
+
     this.setState({
       question: apidata.results[current].question,
       answers: answersApi.map((element) => {
@@ -66,7 +62,6 @@ class Mquestions extends React.Component {
       current: current + 1
     });
   }
-
   isBoolean() {
     let { current, apidata } = this.state;
     this.setState({
@@ -77,14 +72,12 @@ class Mquestions extends React.Component {
       current: current + 1
     });
   }
-
   isRightAnswer() {
     this.setState({
       score: this.state.score + 1
     });
     this.getQuestion();
   }
-
   displayResults() {
     let { score, max, cor_answer } = this.state;
     data.score = score;
@@ -124,27 +117,29 @@ class Mquestions extends React.Component {
     return (
       <div className="Mquestions">
         <div>
-          {this.state.loading === true ?
+          {this.state.loading === true
+            ?
             (<div id="loadingSpinner">
-                <Loader type="ThreeDots" color="white"/>
-              </div>
+              <Loader type="ThreeDots" color="white" />
+            </div>
             )
             :
             (<div id="questionsContainer">
               <h2>Questions {current}/{max}</h2>
               <p>{decodeURIComponent(question)}</p>
-            </div>)}
+            </div>
+            )}
           <div className="buttonBoxContainer">
             <div className="buttonBox">
               {this.state.answers.map(element => {
-                  return (
-                    <div>
-                      <button className="answerButton" onClick={this.handleOnClick}>
-                        {decodeURIComponent(element)}
-                      </button>
-                    </div>
-                  );
-                })}
+                return (
+                  <div>
+                    <button className="answerButton" onClick={this.handleOnClick}>
+                      {decodeURIComponent(element)}
+                    </button>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
