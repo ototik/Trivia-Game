@@ -7,7 +7,7 @@
   width: 645px;
   transform: translate(-50%, -50%);
   text-align: center;
-  display: flex;
+  display: grid;
   border-radius: 11px;
   background-color: #f598a0;
   font-size: 20px;
