@@ -55,6 +55,10 @@ class Selector extends React.Component {
     return console.log(apiUrl);
   }
 
+  componentDidMount(){
+    this.select.focus();
+  }
+
   render() {
     return (
       <div id="form">
@@ -62,9 +66,11 @@ class Selector extends React.Component {
         <div className="Category">
           <label>Category: </label>
           <select
+            id="select"
             className="params"
             value={this.state.value}
             onChange={this.handleChange}
+            ref={(select) => { this.select = select; }}
           >
             {" "}
             {data.value.map(value => {
@@ -74,7 +80,7 @@ class Selector extends React.Component {
         </div>
         <div className="Category">
           <label className="params2">Number of questions: </label>
-          <select onChange={this.handleQuestionNum} value={this.state.number}>
+          <select className="params" onChange={this.handleQuestionNum} value={this.state.number}>
             {data.questionNumber.map(numbers => {
               return <option>{numbers}</option>;
             })}

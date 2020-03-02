@@ -15,7 +15,8 @@ class Mquestions extends React.Component {
       current: 0,
       max: 0,
       score: 0,
-      apidata: ""
+      apidata: "",
+      color: "answerButton"
     };
     this.getQuestion = this.getQuestion.bind(this);
     this.isRightAnswer = this.isRightAnswer.bind(this);
@@ -96,12 +97,14 @@ class Mquestions extends React.Component {
       this.state.cor_answer === event.target.innerText &&
       apidata.results.length !== current
     ) {
+      this.setState({ color: "correctAnswer" });
       this.isRightAnswer();
       this.getQuestion();
     } else if (
       this.state.cor_answer !== event.target.innerText &&
       apidata.results.length !== current
     ) {
+      this.setState({ color: "wrongAnswer" });
       this.getQuestion();
     } else if (
       this.state.cor_answer === event.target.innerText &&
@@ -135,7 +138,10 @@ class Mquestions extends React.Component {
             this.state.answers.map(element => {
               return (
                 <div key={element}>
-                  <button className="answerButton" onClick={this.handleOnClick}>
+                  <button
+                    className={this.state.color}
+                    onClick={this.handleOnClick}
+                  >
                     {decodeURIComponent(element)}
                   </button>
                 </div>

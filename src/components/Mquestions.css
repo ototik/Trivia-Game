@@ -54,3 +54,6 @@
 .wrongAnswer {
   background-color: red;
 }
+#loadingSpinner {
+  text-align: center;
+}
