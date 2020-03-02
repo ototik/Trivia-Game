@@ -87,6 +87,7 @@ class Mquestions extends React.Component {
     data.max = max;
     data.cor_answer = cor_answer;
     history.push("/Zsgameresult");
+    console.log(cor_answer);
   }
   /*fixed the results display to update the score before displaying the results, if someone can come up with something cleaner feel free to modify*/
   handleOnClick = event => {
