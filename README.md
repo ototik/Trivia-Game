@@ -3,6 +3,7 @@
 <br>
 Deployed Application: <br/>
 https://trivia-night-hun.netlify.com/
+
 <br/>
 
 Project Presentation: <br/>
