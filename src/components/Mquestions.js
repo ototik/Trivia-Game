@@ -3,7 +3,7 @@ import axios from "axios";
 import data from "./data";
 import history from "./../history";
 import "./Mquestions.css";
-import Loader from 'react-loader-spinner';
+import Loader from "react-loader-spinner";
 
 const datafromjson = data;
 class Mquestions extends React.Component {
@@ -41,11 +41,27 @@ class Mquestions extends React.Component {
           loading: false,
         });
         this.getQuestion();
+      })
+      .catch(function(error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        }
+        alert(
+          "Sorry, the requested game selection does not contain any questions. Please pick a new one!"
+        );
+        history.push("/Nselector");
       });
       
   }
 
   getQuestion() {
+    this.setState({
+      clicked: false,
+      showGoodAnswer: false
+    });
     let { current, apidata } = this.state;
     this.setState({ clicked: false })
     if (apidata.results[current].type === "multiple") {
@@ -58,13 +74,17 @@ class Mquestions extends React.Component {
   /*creating the answers array with map*/
   isMultiple() {
     let { current, apidata } = this.state;
-    let answersApi = apidata.results[current].incorrect_answers.concat(apidata.results[current].correct_answer)
+    let answersApi = apidata.results[current].incorrect_answers.concat(
+      apidata.results[current].correct_answer
+    );
 
     this.setState({
       question: apidata.results[current].question,
-      answers: answersApi.map((element) => {
-        return element
-      }).sort(() => Math.random() - 0.5),
+      answers: answersApi
+        .map(element => {
+          return element;
+        })
+        .sort(() => Math.random() - 0.5),
       cor_answer: decodeURIComponent(apidata.results[current].correct_answer),
       max: apidata.results.length,
       current: current + 1,
@@ -143,13 +163,14 @@ class Mquestions extends React.Component {
             (<div id="loadingSpinner">
               <Loader type="ThreeDots" color="white" />
             </div>
-            )
-            :
-            (<div id="questionsContainer">
-              <h2>Questions {current}/{max}</h2>
+          ) : (
+            <div id="questionsContainer">
+              <h2>
+                Questions {current}/{max}
+              </h2>
               <p>{decodeURIComponent(question)}</p>
             </div>
-            )}
+          )}
           <div className="buttonBoxContainer">
             <div  className="buttonBox">
               {this.state.answers.map(element => {

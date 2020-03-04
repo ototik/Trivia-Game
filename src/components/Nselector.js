@@ -49,19 +49,18 @@ class Selector extends React.Component {
     var apiUrl = `https://opentdb.com/api.php?amount=${this.state.number}&category=${this.state.value}&difficulty=${this.state.difficulty}&type=${this.state.type}&encode=url3986`;
     this.setState({ api: apiUrl });
     console.log(this.state);
-    event.preventDefault();
     history.push("/Mquestions");
     data.url = apiUrl;
     return console.log(apiUrl);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.select.focus();
   }
 
   render() {
     return (
-      <div id="form">
+      <div id="form" >
         <p id="chooseName">CHOOSE YOUR GAME:</p>
         <div className="Category">
           <label>Category: </label>
@@ -70,7 +69,9 @@ class Selector extends React.Component {
             className="params"
             value={this.state.value}
             onChange={this.handleChange}
-            ref={(select) => { this.select = select; }}
+            ref={select => {
+              this.select = select;
+            }}
           >
             {" "}
             {data.value.map(value => {
@@ -80,7 +81,11 @@ class Selector extends React.Component {
         </div>
         <div className="Category">
           <label className="params2">Number of questions: </label>
-          <select className="params" onChange={this.handleQuestionNum} value={this.state.number}>
+          <select
+            className="params"
+            onChange={this.handleQuestionNum}
+            value={this.state.number}
+          >
             {data.questionNumber.map(numbers => {
               return <option key={numbers}>{numbers}</option>;
             })}
