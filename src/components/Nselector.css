@@ -1,4 +1,4 @@
-.button {
+#form .button {
   -moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
   -webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
   box-shadow: inset 0px 1px 0px 0px #fce2c1;
@@ -41,7 +41,7 @@
   text-align: center;
   text-shadow: 1px 1px 0px #cc9f52;
 }
-.button:hover {
+#form .button:hover {
   background: -webkit-gradient(
     linear,
     left top,
@@ -53,7 +53,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
   background-color: #fb9e25;
 }
-.button:active {
+#form .button:active {
   position: relative;
   top: 1px;
 }
@@ -94,4 +94,11 @@ input.params::-ms-browse {
 }
 .Category {
   display: grid;
+}
+
+#form .Category select:focus,
+#form button:focus {
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: red;
 }

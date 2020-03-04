@@ -8,6 +8,7 @@
   border-radius: 6px;
   border-style: none;
   font-size: medium;
+  background: '';
 }
 
 .answerButton:hover {

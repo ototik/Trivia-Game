@@ -7,7 +7,7 @@
   width: 645px;
   transform: translate(-50%, -50%);
   text-align: center;
-  display: flex;
+  display: grid;
   border-radius: 11px;
   background-color: #f598a0;
   font-size: 20px;
@@ -23,6 +23,12 @@
   font-size: 18px;
   border: 1px solid black;
   border-radius: 6px;
+}
+
+.Tcontainer input:focus {
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: red;
 }
 
 .inputButton {

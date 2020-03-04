@@ -18,8 +18,11 @@ class Mquestions extends React.Component {
       score: 0,
       apidata: "",
       loading: true,
-      show: false
+      show: false,
+      clicked: false,
+      showGoodAnswer: false,
     };
+    this.buttonRefs = [];
     this.getQuestion = this.getQuestion.bind(this);
     this.isRightAnswer = this.isRightAnswer.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
@@ -27,6 +30,7 @@ class Mquestions extends React.Component {
     this.isMultiple = this.isMultiple.bind(this);
     this.displayResults = this.displayResults.bind(this);
   }
+
   componentDidMount() {
     axios
       .get(datafromjson.url)
@@ -38,8 +42,14 @@ class Mquestions extends React.Component {
         });
         this.getQuestion();
       });
+    this.buttonRefs[0] && this.buttonRefs[0].focus();
   }
+
   getQuestion() {
+    this.setState({
+      clicked: false,
+      showGoodAnswer: false,  
+    });
     let { current, apidata } = this.state;
     if (apidata.results[current].type === "multiple") {
       this.isMultiple();
@@ -72,12 +82,14 @@ class Mquestions extends React.Component {
       current: current + 1
     });
   }
+
   isRightAnswer() {
     this.setState({
       score: this.state.score + 1
     });
     this.getQuestion();
   }
+
   displayResults() {
     let { score, max, cor_answer } = this.state;
     data.score = score;
@@ -86,31 +98,55 @@ class Mquestions extends React.Component {
     history.push("/Zsgameresult");
   }
   /*fixed the results display to update the score before displaying the results, if someone can come up with something cleaner feel free to modify*/
-  handleOnClick = event => {
-    let { apidata, current } = this.state;
+  handleOnClick = (event => {
+    let { apidata, current, cor_answer} = this.state; 
+    this.setState({
+      clicked: true
+    });
+
+    console.log(event.target.id);
+    console.log(this.state.answers.indexOf(cor_answer));
+    console.log(cor_answer);
+    console.log(this.state.answers);
+
+
     if (
-      this.state.cor_answer === event.target.innerText &&
+      cor_answer === event.target.innerText &&
       apidata.results.length !== current
     ) {
-      setTimeout(() => this.isRightAnswer(), 2000);
+      this.setState({ showGoodAnswer: true });
+      /* event.target.style.backgroundColor= 'green';
+      setTimeout(() => this.setState({ showGoodAnswer: true }), 1000); */
+      setTimeout(() => this.isRightAnswer(), 1000);
     } else if (
-      this.state.cor_answer !== event.target.innerText &&
+      cor_answer !== event.target.innerText &&
       apidata.results.length !== current
     ) {
-      setTimeout(() => this.getQuestion(), 2000)
+      event.target.style.backgroundColor= 'red';
+      setTimeout(() => this.setState({ showGoodAnswer: true }), 1000);
+      setTimeout(() => this.getQuestion(), 3000);
+      
     } else if (
-      this.state.cor_answer === event.target.innerText &&
+      cor_answer === event.target.innerText &&
       apidata.results.length === current
     ) {
+      this.setState({ showGoodAnswer: true });
+      /* event.target.style.backgroundColor= 'green';
+      setTimeout(() => this.setState({ showGoodAnswer: true }), 1000); */
       setTimeout(() => this.setState({ score: this.state.score + 1 }, () =>
-        this.displayResults()), 2000)
+        this.displayResults()), 1000)
     } else if (
-      this.state.cor_answer !== event.target.innerText &&
+      cor_answer !== event.target.innerText &&
       apidata.results.length === current
     ) {
-      setTimeout(() => this.displayResults(), 2000)
+      event.target.style.backgroundColor= 'red';
+      setTimeout(() => this.setState({ showGoodAnswer: true }), 1000);
+      setTimeout(() => this.displayResults(), 3000);
     }
-  };
+  });
+
+
+
   /*added loading spinner*/
   render() {
     let { current, max, question } = this.state;
@@ -130,17 +166,28 @@ class Mquestions extends React.Component {
             </div>
             )}
           <div className="buttonBoxContainer">
-            <div className="buttonBox">
-              {this.state.answers.map(element => {
+            {this.state.clicked === false || this.state.showGoodAnswer === false
+            ?
+            (<div className="buttonBox">
+              {this.state.answers.map((element, i) => {
                 return (
-                  <div>
-                    <button className="answerButton" onClick={this.handleOnClick}>
+                  <div key={element} >
+                    <button id={i} className='answerButton' onClick={!this.state.clicked ? this.handleOnClick : null} ref={ref => {this.buttonRefs[i] = ref;}}>
                       {decodeURIComponent(element)}
                     </button>
                   </div>
                 );
               })}
             </div>
+            )
+            :
+            (<div className="buttonBox">
+                <button className='answerButton' onClick={null} style={{backgroundColor: 'green'}}>
+                      {decodeURIComponent(this.state.cor_answer)}
+                </button>
+
+            </div>
+            )}
           </div>
         </div>
       </div>
@@ -149,3 +196,4 @@ class Mquestions extends React.Component {
 }
 
 export default Mquestions;
+
