@@ -13,16 +13,16 @@ class Mquestions extends React.Component {
       question: "",
       answers: [],
       cor_answer: "",
+      classN: "answerButton",
       current: 0,
       max: 0,
       score: 0,
       apidata: "",
       loading: true,
-      show: false,
       clicked: false,
-      showGoodAnswer: false
     };
-    this.buttonRefs = [];
+    
+    this.myRef = [];
     this.getQuestion = this.getQuestion.bind(this);
     this.isRightAnswer = this.isRightAnswer.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
@@ -38,7 +38,7 @@ class Mquestions extends React.Component {
       .then(data => {
         this.setState({
           apidata: data,
-          loading: false
+          loading: false,
         });
         this.getQuestion();
       })
@@ -54,7 +54,7 @@ class Mquestions extends React.Component {
         );
         history.push("/Nselector");
       });
-    this.buttonRefs[0] && this.buttonRefs[0].focus();
+      
   }
 
   getQuestion() {
@@ -63,8 +63,10 @@ class Mquestions extends React.Component {
       showGoodAnswer: false
     });
     let { current, apidata } = this.state;
+    this.setState({ clicked: false })
     if (apidata.results[current].type === "multiple") {
       this.isMultiple();
+
     } else {
       this.isBoolean();
     }
@@ -85,9 +87,11 @@ class Mquestions extends React.Component {
         .sort(() => Math.random() - 0.5),
       cor_answer: decodeURIComponent(apidata.results[current].correct_answer),
       max: apidata.results.length,
-      current: current + 1
+      current: current + 1,
+      classN: "answerButton",
     });
   }
+  
   isBoolean() {
     let { current, apidata } = this.state;
     this.setState({
@@ -95,8 +99,10 @@ class Mquestions extends React.Component {
       answers: [["True"], ["False"]],
       cor_answer: decodeURIComponent(apidata.results[current].correct_answer),
       max: apidata.results.length,
-      current: current + 1
+      current: current + 1,
+      classN: "answerButton"
     });
+  
   }
 
   isRightAnswer() {
@@ -113,65 +119,48 @@ class Mquestions extends React.Component {
     data.cor_answer = cor_answer;
     history.push("/Zsgameresult");
   }
-  /*fixed the results display to update the score before displaying the results, if someone can come up with something cleaner feel free to modify*/
+
   handleOnClick = event => {
-    let { apidata, current, cor_answer } = this.state;
-    this.setState({
-      clicked: true
-    });
-
-    console.log(event.target.id);
-    console.log(this.state.answers.indexOf(cor_answer));
-    console.log(cor_answer);
-    console.log(this.state.answers);
-
+    let { current, cor_answer, score, max } = this.state;
+    let target = event.target.innerText;
     if (
-      cor_answer === event.target.innerText &&
-      apidata.results.length !== current
+      cor_answer === target &&
+      max !== current
     ) {
-      this.setState({ showGoodAnswer: true });
-      /* event.target.style.backgroundColor= 'green';
-      setTimeout(() => this.setState({ showGoodAnswer: true }), 1000); */
-      setTimeout(() => this.isRightAnswer(), 1000);
+      event.target.className = "answerButtonG"
+      setTimeout(() => this.isRightAnswer(), 2000);
     } else if (
-      cor_answer !== event.target.innerText &&
-      apidata.results.length !== current
+      cor_answer !== target &&
+      max !== current
     ) {
-      event.target.style.backgroundColor= '#FF0000';
-      setTimeout(() => this.setState({ showGoodAnswer: true }), 1000);
-      setTimeout(() => this.getQuestion(), 3000);
+      event.target.className = "answerButtonR"
+      this.myRef[decodeURIComponent(cor_answer)].className = "answerButtonG"
+      setTimeout(() => this.getQuestion(), 2000)
     } else if (
-      cor_answer === event.target.innerText &&
-      apidata.results.length === current
+      cor_answer === target &&
+      max === current
     ) {
-      this.setState({ showGoodAnswer: true });
-      /* event.target.style.backgroundColor= 'green';
-      setTimeout(() => this.setState({ showGoodAnswer: true }), 1000); */
-      setTimeout(
-        () =>
-          this.setState({ score: this.state.score + 1 }, () =>
-            this.displayResults()
-          ),
-        1000
-      );
+      event.target.className = "answerButtonG"
+      setTimeout(() => this.setState({ score: score + 1 }, () =>
+        this.displayResults()), 2000)
     } else if (
-      cor_answer !== event.target.innerText &&
-      apidata.results.length === current
+      cor_answer !== target &&
+      max === current
     ) {
-      event.target.style.backgroundColor= '#FF0000';
-      setTimeout(() => this.setState({ showGoodAnswer: true }), 1000);
-      setTimeout(() => this.displayResults(), 3000);
+      event.target.className = "answerButtonR"
+      this.myRef[decodeURIComponent(cor_answer)].className = "answerButtonG"
+      setTimeout(() => this.displayResults(), 2000)
     }
   };
 
-  /*added loading spinner*/
   render() {
-    let { current, max, question } = this.state;
+    let { current, max, question, loading } = this.state;
     return (
       <div className="Mquestions">
         <div>
-          {this.state.loading === true ? (
-            <div id="loadingSpinner">
+          {loading === true
+            ?
+            (<div id="loadingSpinner">
               <Loader type="ThreeDots" color="white" />
             </div>
           ) : (
@@ -183,36 +172,22 @@ class Mquestions extends React.Component {
             </div>
           )}
           <div className="buttonBoxContainer">
-            {this.state.clicked === false ||
-            this.state.showGoodAnswer === false ? (
-              <div className="buttonBox">
-                {this.state.answers.map((element, i) => {
-                  return (
-                    <div key={element}>
-                      <button
-                        id={i}
-                        className="answerButton"
-                        onClick={
-                          !this.state.clicked ? this.handleOnClick : null
-                        }
-                        ref={ref => {
-                          this.buttonRefs[i] = ref;
-                        }}
-                      >
-                        {decodeURIComponent(element)}
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            )
-            :
-            (
-              <button className='correctAnswerButton' onClick={null} >
-                {decodeURIComponent(this.state.cor_answer)}
-              </button>
-
-            )}
+            <div  className="buttonBox">
+              {this.state.answers.map(element => {
+                let random = Math.random();
+                return (
+                  <div key={random}>
+                    <button 
+                    onClick={!this.state.clicked ? this.handleOnClick : null}
+                    ref={myRef => this.myRef[decodeURIComponent(element)] = myRef}
+                    id={decodeURIComponent(element)} 
+                    className={this.state.classN}>
+                      {decodeURIComponent(element)}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
