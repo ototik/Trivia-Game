@@ -61,7 +61,7 @@ class Selector extends React.Component {
 
   render() {
     return (
-      <div id="form">
+      <div id="form" >
         <p id="chooseName">CHOOSE YOUR GAME:</p>
         <div className="Category">
           <label>Category: </label>

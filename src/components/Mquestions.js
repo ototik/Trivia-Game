@@ -122,7 +122,7 @@ class Mquestions extends React.Component {
       cor_answer !== event.target.innerText &&
       apidata.results.length !== current
     ) {
-      event.target.style.backgroundColor= 'red';
+      event.target.style.backgroundColor= '#FF0000';
       setTimeout(() => this.setState({ showGoodAnswer: true }), 1000);
       setTimeout(() => this.getQuestion(), 3000);
       
@@ -139,7 +139,7 @@ class Mquestions extends React.Component {
       cor_answer !== event.target.innerText &&
       apidata.results.length === current
     ) {
-      event.target.style.backgroundColor= 'red';
+      event.target.style.backgroundColor= '#FF0000';
       setTimeout(() => this.setState({ showGoodAnswer: true }), 1000);
       setTimeout(() => this.displayResults(), 3000);
     }
@@ -168,25 +168,25 @@ class Mquestions extends React.Component {
           <div className="buttonBoxContainer">
             {this.state.clicked === false || this.state.showGoodAnswer === false
             ?
-            (<div className="buttonBox">
-              {this.state.answers.map((element, i) => {
-                return (
-                  <div key={element} >
-                    <button id={i} className='answerButton' onClick={!this.state.clicked ? this.handleOnClick : null} ref={ref => {this.buttonRefs[i] = ref;}}>
-                      {decodeURIComponent(element)}
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
+            (
+              <div className="buttonBox">
+                {this.state.answers.map((element, i) => {
+                  return (
+                    <div key={element} >
+                      <button id={i} className='answerButton' onClick={!this.state.clicked ? this.handleOnClick : null} ref={ref => {this.buttonRefs[i] = ref;}}>
+                        {decodeURIComponent(element)}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
             )
             :
-            (<div className="buttonBox">
-                <button className='answerButton' onClick={null} style={{backgroundColor: 'green'}}>
-                      {decodeURIComponent(this.state.cor_answer)}
-                </button>
+            (
+              <button className='correctAnswerButton' onClick={null} >
+                {decodeURIComponent(this.state.cor_answer)}
+              </button>
 
-            </div>
             )}
           </div>
         </div>
