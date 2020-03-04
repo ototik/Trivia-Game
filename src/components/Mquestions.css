@@ -59,6 +59,13 @@
   box-shadow: 0px 0px 15px 4px rgba(113, 113, 113, 0.68);
 }
 
+.correctAnswer {
+  background-color: green;
+}
+
+.wrongAnswer {
+  background-color: red;
+}
 #loadingSpinner {
-text-align: center;
+  text-align: center;
 }

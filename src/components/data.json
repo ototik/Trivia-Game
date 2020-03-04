@@ -73,11 +73,11 @@
     { "value": "10", "text": "Entertainment: Books" },
     { "value": "11", "text": "Entertainment: Film" },
     { "value": "12", "text": "Entertainment: Music" },
-    { "value": "13", "text": "Entertainment: Musicals &amp; Theatres" },
+    { "value": "13", "text": "Entertainment: Musicals & Theatres" },
     { "value": "14", "text": "Entertainment: Television" },
     { "value": "15", "text": "Entertainment: Video Games" },
     { "value": "16", "text": "Entertainment: Board Games" },
-    { "value": "17", "text": "Science &amp; Nature" },
+    { "value": "17", "text": "Science &  Nature" },
     { "value": "18", "text": "Science: Computers" },
     { "value": "19", "text": "Science: Mathematics" },
     { "value": "20", "text": "Mythology" },
@@ -91,7 +91,7 @@
     { "value": "28", "text": "Vehicles" },
     { "value": "29", "text": "Entertainment: Comics" },
     { "value": "30", "text": "Science: Gadgets" },
-    { "value": "31", "text": "Entertainment: Japanese Anime &amp; Manga" },
-    { "value": "32", "text": "Entertainment: Cartoon &amp; Animations" }
+    { "value": "31", "text": "Entertainment: Japanese Anime & Manga" },
+    { "value": "32", "text": "Entertainment: Cartoon & Animations" }
   ]
 }
