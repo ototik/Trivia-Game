@@ -9,6 +9,22 @@
   border-style: none;
   font-size: medium;
 }
+.answerButtonG {
+  width: 100%;
+  height: 50px;
+  border-radius: 6px;
+  border-style: none;
+  font-size: medium;
+  background-color: #4cff33;
+}
+.answerButtonR {
+  width: 100%;
+  height: 50px;
+  border-radius: 6px;
+  border-style: none;
+  font-size: medium;
+  background-color: #ff0000;
+}
 
 .answerButton:hover {
   background: -webkit-gradient(

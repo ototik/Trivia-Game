@@ -74,7 +74,7 @@ class Selector extends React.Component {
           >
             {" "}
             {data.value.map(value => {
-              return <option value={value.value}>{value.text}</option>;
+              return <option key={value.value} value={value.value}>{value.text}</option>;
             })}
           </select>
         </div>
@@ -82,7 +82,7 @@ class Selector extends React.Component {
           <label className="params2">Number of questions: </label>
           <select className="params" onChange={this.handleQuestionNum} value={this.state.number}>
             {data.questionNumber.map(numbers => {
-              return <option>{numbers}</option>;
+              return <option key={numbers}>{numbers}</option>;
             })}
           </select>
         </div>
@@ -94,7 +94,7 @@ class Selector extends React.Component {
             onChange={this.handleDiff}
           >
             {data.cat.map(category => {
-              return <option value={category.value}>{category.text}</option>;
+              return <option key={category.value} value={category.value}>{category.text}</option>;
             })}
           </select>
         </div>
@@ -106,7 +106,7 @@ class Selector extends React.Component {
             onChange={this.handleType}
           >
             {data.type.map(type => {
-              return <option value={type.value}>{type.text}</option>;
+              return <option key={type.value} value={type.value}>{type.text}</option>;
             })}
           </select>
         </div>
