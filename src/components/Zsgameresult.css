@@ -44,6 +44,7 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
 #playAgainButton {
   -moz-box-shadow: inset 0px 1px 0px 0px #fce2c1;
   -webkit-box-shadow: inset 0px 1px 0px 0px #fce2c1;
@@ -106,7 +107,13 @@
   top: 1px;
 }
 
-#PlayAgain {
+/* .modal_content button:focus {
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: red;
+} */
+
+ #PlayAgain {
   display: grid;
   text-decoration: none;
 }

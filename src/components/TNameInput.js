@@ -24,9 +24,7 @@ class TNameInput extends Component {
   }
 
   onChangePlayerName(event) {
-    this.state.playerName.length >= 3
-      ? history.push("/Nselector")
-      : this.setState(alert("Please use minimum 3 characters!"));
+    history.push("/Nselector")
   }
 
   componentDidMount(){
